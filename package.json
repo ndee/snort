@@ -9,7 +9,8 @@
     "test": "yarn build && yarn workspace @snort/app test && yarn workspace @snort/system test",
     "pre:commit": "yarn workspace @snort/app intl-extract && yarn workspace @snort/app intl-compile && yarn prettier --write .",
     "push-prod": "git switch snort-prod && git merge --ff-only main && git push && git checkout main",
-    "docs": "typedoc --entryPointStrategy packages ./packages/* --exclude ./packages/app --exclude ./packages/webrtc-server --name snort.social"
+    "docs": "typedoc --entryPointStrategy packages ./packages/* --exclude ./packages/app --exclude ./packages/webrtc-server --name snort.social",
+    "publish": "docker buildx build --platform linux/amd64 -t catbeans/snort . && docker push catbeans/snort"
   },
   "prettier": {
     "printWidth": 120,
